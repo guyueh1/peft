@@ -811,7 +811,7 @@ class PeftModelForCausalLM(PeftModel):
     ):
         peft_config = self.active_peft_config
         if not isinstance(peft_config, PromptLearningConfig):
-            if self.base_model.config.model_type == "mpt":
+            if self.config.model_type == "mpt":
                 if inputs_embeds is not None:
                     raise AssertionError("forward in MPTForCausalLM does not support inputs_embeds")
                 return self.base_model(
